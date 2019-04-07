@@ -17,4 +17,19 @@
             <li>Toggle amortization table into view</li>
             <li>Toggle amortization table out of view</li>
         </ol>
+        <li>Calculate Monthly CashFlow given inputs</li>
+        <ol>
+            <li>Rent Expected</li>
+            <li>HOA fees (dollars)</li>
+            <li>Property Management Fees (percentage of rent)</li>
+            <li>Leasing Fees (percentage of rent)</li>
+            <li>Insurance (dollars)</li>
+            <li>Repairs and Maintence Reserves</li>
+            <li>Vacancy (percentage)</li>s
+        </ol>
+        <li>Calculate summaries</li>
+        <ol>
+            <li>Cap Rate</li>
+            <li>Cash on Cash Return</li>
+        </ol>
     </ul>
