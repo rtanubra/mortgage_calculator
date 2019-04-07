@@ -5,6 +5,13 @@ Create a robust yet lightweight calculator to analyze investment properties on t
 Feed me as much inputs as possible, or leave the calculator to fill everything in with industry averages to quickly calculate your expected returns.
 </p>
 <h2>Technologies</h2>
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
+    <li>Bootstrap (for styling and some responsive design)</li>
+    <li>JQuery (DOM traversal and manipulation)</li>
+</ul>
 <h2>Features</h2>
     <ul>
         <li>Calculate Monthly Payments given inputs</li>
