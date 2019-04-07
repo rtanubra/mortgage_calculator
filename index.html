@@ -17,22 +17,28 @@
         <main>
             <div class="main-section container-fluid">
                 <h1>Mortgage Pmt Calculator</h1>
-                <form>
-                    <fieldset>
-                        <legend>Mortgage Details</legend>
-                        <label for ="js-house-price" >House Price</label>
-                        <input placeholder="180000" required type=number id="js-house-price"/>
-                        <label for="js-down-payment" >Down Payment</label>
-                        <input placeholder="36000" required type=number id="js-down-payment"/>
-                        <label for="js-amort-years" >Number of Years</label>
-                        <input value="30" required type=number id="js-amort-years"/>
-                        <label for="js-interest" >Interest Rate</label>
-                        <input value="3.65" required type=number id="js-interest"/>
-                        <input class="btn btn-success" type=submit value="calculate"/>
-                    </fieldset>
-                </form>
+                <div class="row">   
+                    <form class="js-mortgage-details item col-xs-6">
+                        <fieldset>
+                            <h2>Mortgage Details</h2>
+                            <label for ="js-house-price" >House Price</label>
+                            <input placeholder="180000" required type=number id="js-house-price"/>
+                            <label for="js-down-payment" >Down Payment</label>
+                            <input placeholder="36000" required type=number id="js-down-payment"/>
+                            <label for="js-amort-years" >Number of Years</label>
+                            <input value="30" required type=number id="js-amort-years"/>
+                            <label for="js-interest" >Interest Rate</label>
+                            <input value="3.65" step="0.01" required type=number id="js-interest"/>
+                            <input class="btn btn-success" type=submit value="calculate"/>
+                        </fieldset>
+                    </form>
+                    <div class="js-monthly-pmt hidden item col-xs-6">
+                        <h2>Monthly Pmt</h2>
+                        <p>Your Monthly Payment is: <strong><span class="my-number"></span></strong></p>
+                    </div>
+                </div>
             </div>
         </main>
-        <script src="index.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
