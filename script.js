@@ -1,6 +1,11 @@
-function calculateNextmonth(month){
+function buildMonthlyCosts(){
 
 }
+
+function MonthlyCostsBase(){
+    
+}
+
 function buildPaymentRow(pmtObj){
     //create a row
     $(".js-amort-table").append(`
@@ -13,6 +18,7 @@ function buildPaymentRow(pmtObj){
     </tr>
     `)
 }
+
 function calculatePaymentRow(loanObj,lastDate){
     //Calculate Placeholder variables
     let pmtDate = new Date(lastDate)

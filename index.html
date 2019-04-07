@@ -37,30 +37,62 @@
                         <h2>Monthly Pmt</h2>
                         <p>Your Monthly Payment is: <strong><span class="my-number"></span></strong></p>
                         <button class="js-tgl-table btn btn-info">Toggle Amortization Table</button>
-                        <button class="js-tgl-graphs btn btn-info">Toggle Amortization Graphs</button>
+                        <button class="hidden js-tgl-graphs btn btn-info">Toggle Amortization Graphs</button>
                     </div>
+
                 </div>
             </div>
+            <div class="container-fluid">
+            <section class="row">
 
-            <div class="amortization-table hidden">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>PMT</th>
-                            <th>Principal Paid</th>
-                            <th>Interest Paid</th>
-                            <th>Balance</th>
-                        </tr>
-                    </thead>
-                    <tbody class="js-amort-table">
-                    </tbody>
-                </table>
+                <div class="amortization-graphs hidden col-sm-6 boxes">
+                </div>
+
+                <div class="monthly-costs hidden col-sm-6 boxes" >
+                    <form>
+                        <legend>Monthly Breakdown</legend>
+                        <label for="js-rent-expected">Monthly Rent</label>
+                        <input type="number" required value="1300" id="js-rent-expected"/>
+                        <label for="js-vac-fees" >Vacancy Reserves (5% rent?)</label>
+                        <input type="number" value="65" required  id="js-vac-fees"/>
+                        <label for="js-hoa-fees" >Maintenance (HOA) fees</label>
+                        <input type="number" value="0" required  id="js-hoa-fees"/>
+                        <label for="js-prop-fees" >Property Management Fees (7-12% rent?)</label>
+                        <input type="number" value="130" required  id="js-prop-fees"/>
+                        <label for="js-lease-fees" >Leasing Fees (3-6% rent?)</label>
+                        <input type="number" value="65" required  id="js-lease-fees"/>
+                        <label for="js-ins-fees" >Insurance (check your area)</label>
+                        <input type="number" value="150" required id="js-ins-fees"/>
+                        <label for="js-mort-fees" >Mortgage Pmt</label>
+                        <input type="number" value="150" required id="js-mort-fees"/>
+                        <label for="js-add-fees" >Additional Monthly Fees</label>
+                        <input type="number" value="0" required id="js-add-fees"/>
+                        <input type="submit" class="btn btn-success" value="Calculate Monthly" />
+                    </form>
+                </div>
+
+                <div class="summary hidden col-sm-6 boxes">
+                    <h2>Summary</h2>
+                </div>
+
+                <div class="amortization-table hidden col-sm-6 ">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>PMT</th>
+                                <th>Principal Paid</th>
+                                <th>Interest Paid</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="js-amort-table">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
             </div>
 
-            <div class="amortization-graphs hidden">
-
-            </div>
         </main>
         <script src="script.js"></script>
     </body>
