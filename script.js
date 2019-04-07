@@ -1,5 +1,61 @@
+function calculateNextmonth(month){
+
+}
+function buildPaymentRow(pmtObj){
+    //create a row
+    $(".js-amort-table").append(`
+    <tr>
+        <td>${`${pmtObj.DATE.getMonth()+1}/${pmtObj.DATE.getFullYear()}`}</td>
+        <td>${pmtObj.PMT}</td>
+        <td>${pmtObj.PRI}</td>
+        <td>${pmtObj.INT}</td>
+        <td>${pmtObj.NEW}</td>
+    </tr>
+    `)
+}
+function calculatePaymentRow(loanObj,lastDate){
+    //Calculate Placeholder variables
+    let pmtDate = new Date(lastDate)
+    pmtDate = new Date(pmtDate.setMonth(pmtDate.getMonth()+1))
+    const prev= loanObj["P"]
+    const pmt = loanObj["PMT"]
+    const msDiff= pmtDate-lastDate
+    const day_diff = msDiff/1000/60/60/24
+    const interestAcrued = Math.round(loanObj["I"]*12/365*day_diff*prev*100)/100
+    const principalPaid = Math.round((pmt-interestAcrued)*100)/100
+    const pmtObj = {
+        "DATE":pmtDate,
+        "PREV":Math.round(prev*100)/100,
+        "PMT":pmt,
+        "PRI":principalPaid,
+        "INT":interestAcrued,
+        "NEW":Math.round((loanObj["P"]-principalPaid)*100)/100
+    }
+    buildPaymentRow(pmtObj)
+    loanObj["P"] -= Math.round(principalPaid*100)/100
+    return loanObj
+}
+
 function buildAmortTable(loanObj){
     $(".js-amort-table").empty()
+    //First row should reflect the initial loan payment disbursed today
+    let currentTime = new Date()
+    console.log(currentTime.getMonth())
+    console.log(currentTime.getFullYear())
+    
+    $(".js-amort-table").append(`
+    <tr>
+        <td>${`${currentTime.getMonth()+1}/${currentTime.getFullYear()}`}</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>${loanObj["P"]}</td>
+    </tr>
+    `)
+    while (loanObj["P"]>0){
+        loanObj = calculatePaymentRow(loanObj,currentTime)
+        currentTime = new Date(currentTime.setMonth(currentTime.getMonth()+1))
+    }
 }
 
 function updatePmt(monthlypmt){
