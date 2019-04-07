@@ -10,10 +10,10 @@ h2{
     margin-left:auto;
     margin-right:auto;
     border:1px solid grey;
-    width:440px;
+    width:400px;
 }
 .item{
-    width:210px;
+    width:180;
 
 }
 input{
@@ -36,5 +36,5 @@ border: solid 1px black;
     margin-top:20px;
     margin-left:auto;
     margin-right:auto;
-    width:440px;
+    width:400;
 }
