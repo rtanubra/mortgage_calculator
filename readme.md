@@ -1,5 +1,9 @@
 <h1>Mortgage Calculator</h1>
 <h2>Motivation</h2>
+<p>
+Create a robust yet lightweight calculator to analyze investment properties on the go.
+Feed me as much inputs as possible, or leave the calculator to fill everything in with industry averages to quickly calculate your expected returns.
+</p>
 <h2>Technologies</h2>
 <h2>Features</h2>
     <ul>
@@ -32,4 +36,11 @@
             <li>Cap Rate</li>
             <li>Cash on Cash Return</li>
         </ol>
+        <li>Create amortization graphs 2 line approach</li>
+        <ol>
+            <li>Loan Amount</li>
+            <li>Equity</li>
+        </ol>
+        <li>Compile the analysis built to a file structure</li>
+        <li>Use an API or scraping tool to autofill rent expected based on area provided. ()alternative would be to link to a website</li>
     </ul>
