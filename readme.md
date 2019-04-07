@@ -9,5 +9,12 @@
             <li>Ammortization Period</li>
             <li>Interest Rate</li>
         </ol>
-        <li></li>
+    </ul>
+<h2>Future Features</h2>
+    <ul>
+        <li>View Amortization table</li>    
+        <ol>
+            <li>Toggle amortization table into view</li>
+            <li>Toggle amortization table out of view</li>
+        </ol>
     </ul>

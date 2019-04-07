@@ -1,9 +1,38 @@
 <!doctype html>
 <html lang="en">
     <head>
-
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Mortgage Calc</title>
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+        <link href="style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        
+        <main>
+            <div class="main-section container-fluid">
+                <h1>Mortgage Pmt Calculator</h1>
+                <form>
+                    <fieldset>
+                        <legend>Mortgage Details</legend>
+                        <label for ="js-house-price" >House Price</label>
+                        <input placeholder="180000" required type=number id="js-house-price"/>
+                        <label for="js-down-payment" >Down Payment</label>
+                        <input placeholder="36000" required type=number id="js-down-payment"/>
+                        <label for="js-amort-years" >Number of Years</label>
+                        <input value="30" required type=number id="js-amort-years"/>
+                        <label for="js-interest" >Interest Rate</label>
+                        <input value="3.65" required type=number id="js-interest"/>
+                        <input class="btn btn-success" type=submit value="calculate"/>
+                    </fieldset>
+                </form>
+            </div>
+        </main>
+        <script src="index.js"></script>
     </body>
 </html>

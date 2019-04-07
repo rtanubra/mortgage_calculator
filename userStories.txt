@@ -1,0 +1,6 @@
+As a New/Returning User
+1. Should be able to input an mortgage interest rate.
+2. Should be able to input a mortgage loan amount.
+3. Should be able to input a mortgage amortization period.
+
+As an Administrator
