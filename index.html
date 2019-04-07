@@ -18,7 +18,7 @@
             <div class="main-section container-fluid">
                 <h1>Mortgage Pmt Calculator</h1>
                 <div class="row">   
-                    <form class="js-mortgage-details item col-xs-6">
+                    <form class="js-mortgage-details item col-sm-6">
                         <fieldset>
                             <h2>Mortgage Details</h2>
                             <label for ="js-house-price" >House Price</label>
@@ -32,12 +32,31 @@
                             <input class="btn btn-success" type=submit value="calculate"/>
                         </fieldset>
                     </form>
-                    <div class="js-monthly-pmt hidden item col-xs-6">
+    
+                    <div class="js-monthly-pmt hidden item col-sm-6">
                         <h2>Monthly Pmt</h2>
                         <p>Your Monthly Payment is: <strong><span class="my-number"></span></strong></p>
+                        <button class="js-tgl-table btn btn-info">Toggle Amortization Table</button>
                     </div>
                 </div>
             </div>
+                <div class="amortization-table hidden">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Prev-Balance</th>
+                                <th>PMT</th>
+                                <th>Principal Paid</th>
+                                <th>Interest Paid</th>
+                                <th>New-Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="js-amort-table">
+
+                        </tbody>
+                    </table>
+                </div>
         </main>
         <script src="script.js"></script>
     </body>

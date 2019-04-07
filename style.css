@@ -29,3 +29,12 @@ label{
 .hidden{
     display:none;
 }
+td, th {
+border: solid 1px black;
+} 
+.amortization-table{
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+    width:460px;
+}

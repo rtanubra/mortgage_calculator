@@ -25,7 +25,7 @@
             <li>Leasing Fees (percentage of rent)</li>
             <li>Insurance (dollars)</li>
             <li>Repairs and Maintence Reserves</li>
-            <li>Vacancy (percentage)</li>s
+            <li>Vacancy (percentage)</li>
         </ol>
         <li>Calculate summaries</li>
         <ol>
