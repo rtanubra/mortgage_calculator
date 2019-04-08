@@ -53,6 +53,7 @@
                         <legend>Monthly Breakdown</legend>
                         <label for="js-rent-expected">Monthly Rent</label>
                         <input type="number" required value="1300" id="js-rent-expected"/>
+                        <button class="js-rent-push btn btn-info" >Recalculate Expenses Based on Rent</button><br>
                         <label for="js-vac-fees" >Vacancy Reserves (5% rent?)</label>
                         <input type="number" step=0.01 value="65" required  id="js-vac-fees"/>
                         <label for="js-hoa-fees" >Maintenance (HOA) fees</label>
@@ -67,7 +68,7 @@
                         <input type="number" step=0.01 value="150" required id="js-mort-fees"/>
                         <label for="js-add-fees" >Additional Monthly Fees</label>
                         <input type="number" step=0.01 value="0" required id="js-add-fees"/>
-                        <input type="submit" class="btn btn-success" value="Calculate Monthly" />
+                        <input type="submit" class="btn btn-success" value="Re-Calculate Monthly" />
                     </form>
                 </div>
 

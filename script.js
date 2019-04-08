@@ -1,5 +1,5 @@
 let monthlyCosts = {
-    
+
 }
 function buildMonthlyCosts(){
 
@@ -10,7 +10,23 @@ function buildMonthlyCostsBase(pmt){
     $("#js-mort-fees").val(pmt)
 
 }
+function updateMonthlyCosts(rent){
+    /* Updates Monthly breakdown form based on the expected rent. 
+    Calculates: 
+        1.Property management
+        2.Vacancry reserve
+        3.Repair and maintenance reserve
+     */
+    console.log(rent)
+    const vac = Math.round(rent*0.05*100)/100
+    const prop = Math.round(rent*0.10*100)/100
+    const lease = Math.round(rent*0.05*100)/100
+    console.log(vac,prop,lease)
+    $("#js-vac-fees").val(vac)
+    $("#js-prop-fees").val(prop)
+    $("#js-lease-fees").val(lease)
 
+}
 function buildPaymentRow(pmtObj){
     //create a row
     $(".js-amort-table").append(`
@@ -113,6 +129,13 @@ function watchToggleAmort(){
 function watchMonthlyForm(){
     $(".js-monthly-breakdown-form").submit(event=>{
         event.preventDefault()
+    })
+    $(".js-rent-push").click(event=>{
+        event.preventDefault()
+        const rent = $("#js-rent-expected").val()
+        console.log(`button clicked ${rent}`)
+        updateMonthlyCosts(rent)
+
     })
 }
 
