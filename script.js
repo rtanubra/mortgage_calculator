@@ -1,34 +1,43 @@
 function buildSummary(mortgage){
     /** Given the mortgage payment builds the monthly summary table */
     //gather data
-    const rent = $("#js-rent-expected").val()
-    const mort = mortgage
-    const vac = $("#js-vac-fees").val()
-    const prop = $("#js-prop-fees").val()
-    const lease =$("#js-lease-fees").val()
-    const hoa = $("#js-hoa-fees").val()
-    const ins = $("#js-ins-fees").val()
-    const add = $("#js-add-fees").val()
-    const repair = $("#js-repair-fees").val()
+    const rent = parseFloat($("#js-rent-expected").val())
+    const mort = parseFloat(mortgage)
+    const vac = parseFloat($("#js-vac-fees").val())
+    const prop = parseFloat($("#js-prop-fees").val())
+    const lease =parseFloat($("#js-lease-fees").val())
+    const hoa = parseFloat($("#js-hoa-fees").val())
+    const ins = parseFloat($("#js-ins-fees").val())
+    const add = parseFloat($("#js-add-fees").val())
+    const repair = parseFloat($("#js-repair-fees").val())
+    const taxes = Math.round(parseFloat($("#js-taxes-fees").val())*100)/100
     //calculate
-    const cashflow = rent- mort-vac-prop-lease-hoa-ins-add
+    const cashflow = Math.round((rent- mort-vac-prop-lease-hoa-ins-add-taxes)*100)/100
     //input data
-    $(".js-sumTable-rent").val(rent)
-    $(".js-sumTable-mort").val(mort)
-    $(".js-sumTable-ins").val(ins)
-    $(".js-sumTable-hoa").val(hoa)
-    $(".js-sumTable-prop").val(prop)
-    $(".js-sumTable-lease").val(lease)
-    $(".js-sumTable-repair").val(repair)
-    $(".js-sumTable-vac").val(vac)
-    $(".js-sumTable-flow").val(cashflow)
+    $(".js-sumTable-rent").html(rent)
+    $(".js-sumTable-mort").html(mort)
+    $(".js-sumTable-taxes").html(taxes)
+    $(".js-sumTable-ins").html(ins)
+    $(".js-sumTable-hoa").html(hoa)
+    $(".js-sumTable-prop").html(prop)
+    $(".js-sumTable-lease").html(lease)
+    $(".js-sumTable-repair").html(repair)
+    $(".js-sumTable-vac").html(vac)
+    $(".js-sumTable-add").html(add)
+    $(".js-sumTable-flow").html(cashflow)
+
     //reveal
-    //$(".summary").removeClass("hidden")
+    console.log(rent,mort,cashflow)
+    $(".summary").removeClass("hidden")
 }
 
 function buildMonthlyCostsBase(pmt){
+    const housePrice = $("#js-house-price").val()
+    const monthlyTaxes = Math.round(housePrice*0.025/12*100)/100
+    console.log("here",housePrice,monthlyTaxes)
     $(".monthly-costs").removeClass("hidden")
     $("#js-mort-fees").val(pmt)
+    $("#js-taxes-fees").val(monthlyTaxes)
 
 }
 function updateMonthlyCosts(rent){
@@ -42,13 +51,14 @@ function updateMonthlyCosts(rent){
     const vac = Math.round(rent*0.05*100)/100
     const prop = Math.round(rent*0.10*100)/100
     const lease = Math.round(rent*0.05*100)/100
-    const repair = Math.round(rent*0.05*100)/100
-    const mortgage = $("#js-mort-fees").val()
+    const repair = Math.round(rent*0.08*100)/100
+    const mortgage = parseFloat($("#js-mort-fees").val())
     console.log(vac,prop,lease,repair,mortgage)
     $("#js-vac-fees").val(vac)
     $("#js-prop-fees").val(prop)
     $("#js-lease-fees").val(lease)
     $("#js-repair-fees").val(repair)
+    buildSummary(mortgage)
 }
 function buildPaymentRow(pmtObj){
     //create a row
@@ -126,7 +136,6 @@ function calculateMortgagePayment(){
     const monthlypmt = Math.round(loan * numerator / denominator*100)/100
     updatePmt(monthlypmt)
     buildMonthlyCostsBase(monthlypmt)
-    buildSummary(monthlypmt)
     const loanObj = {
         "P":loan,
         "PMT":monthlypmt,
@@ -134,6 +143,7 @@ function calculateMortgagePayment(){
         "N":monthlypmt,
     }
     buildAmortTable(loanObj)
+    buildSummary(monthlypmt)
     
 }
 
@@ -154,6 +164,9 @@ function watchToggleAmort(){
 function watchMonthlyForm(){
     $(".js-monthly-breakdown-form").submit(event=>{
         event.preventDefault()
+        const mort= $("#js-mort-fees").val()
+        buildSummary(mort)
+
     })
     $(".js-rent-push").click(event=>{
         event.preventDefault()
