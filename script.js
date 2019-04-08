@@ -1,8 +1,29 @@
-let monthlyCosts = {
-
-}
-function buildMonthlyCosts(){
-
+function buildSummary(mortgage){
+    /** Given the mortgage payment builds the monthly summary table */
+    //gather data
+    const rent = $("#js-rent-expected").val()
+    const mort = mortgage
+    const vac = $("#js-vac-fees").val()
+    const prop = $("#js-prop-fees").val()
+    const lease =$("#js-lease-fees").val()
+    const hoa = $("#js-hoa-fees").val()
+    const ins = $("#js-ins-fees").val()
+    const add = $("#js-add-fees").val()
+    const repair = $("#js-repair-fees").val()
+    //calculate
+    const cashflow = rent- mort-vac-prop-lease-hoa-ins-add
+    //input data
+    $(".js-sumTable-rent").val(rent)
+    $(".js-sumTable-mort").val(mort)
+    $(".js-sumTable-ins").val(ins)
+    $(".js-sumTable-hoa").val(hoa)
+    $(".js-sumTable-prop").val(prop)
+    $(".js-sumTable-lease").val(lease)
+    $(".js-sumTable-repair").val(repair)
+    $(".js-sumTable-vac").val(vac)
+    $(".js-sumTable-flow").val(cashflow)
+    //reveal
+    //$(".summary").removeClass("hidden")
 }
 
 function buildMonthlyCostsBase(pmt){
@@ -21,11 +42,13 @@ function updateMonthlyCosts(rent){
     const vac = Math.round(rent*0.05*100)/100
     const prop = Math.round(rent*0.10*100)/100
     const lease = Math.round(rent*0.05*100)/100
-    console.log(vac,prop,lease)
+    const repair = Math.round(rent*0.05*100)/100
+    const mortgage = $("#js-mort-fees").val()
+    console.log(vac,prop,lease,repair,mortgage)
     $("#js-vac-fees").val(vac)
     $("#js-prop-fees").val(prop)
     $("#js-lease-fees").val(lease)
-
+    $("#js-repair-fees").val(repair)
 }
 function buildPaymentRow(pmtObj){
     //create a row
@@ -103,6 +126,7 @@ function calculateMortgagePayment(){
     const monthlypmt = Math.round(loan * numerator / denominator*100)/100
     updatePmt(monthlypmt)
     buildMonthlyCostsBase(monthlypmt)
+    buildSummary(monthlypmt)
     const loanObj = {
         "P":loan,
         "PMT":monthlypmt,
@@ -110,6 +134,7 @@ function calculateMortgagePayment(){
         "N":monthlypmt,
     }
     buildAmortTable(loanObj)
+    
 }
 
 function watchSubmit(){

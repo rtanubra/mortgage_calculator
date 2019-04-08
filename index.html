@@ -54,26 +54,79 @@
                         <label for="js-rent-expected">Monthly Rent</label>
                         <input type="number" required value="1300" id="js-rent-expected"/>
                         <button class="js-rent-push btn btn-info" >Recalculate Expenses Based on Rent</button><br>
-                        <label for="js-vac-fees" >Vacancy Reserves (5% rent?)</label>
-                        <input type="number" step=0.01 value="65" required  id="js-vac-fees"/>
                         <label for="js-hoa-fees" >Maintenance (HOA) fees</label>
                         <input type="number" step=0.01 value="0" required  id="js-hoa-fees"/>
+                        <label for="js-vac-fees" >Vacancy Reserves (5% rent?)</label>
+                        <input type="number" step=0.01 value="65" required  id="js-vac-fees"/>
                         <label for="js-prop-fees" >Property Management Fees (7-12% rent?)</label>
                         <input type="number" step=0.01 value="130" required  id="js-prop-fees"/>
                         <label for="js-lease-fees" >Leasing Fees (3-6% rent?)</label>
                         <input type="number" step=0.01 value="65" required  id="js-lease-fees"/>
+                        <label for="js-repair-fees" >Repair Maint reserve (3-6% rent?)</label>
+                        <input type="number" step=0.01 value="65" required  id="js-repair-fees"/>
                         <label for="js-ins-fees" >Insurance (check your area)</label>
                         <input type="number" step=0.01 value="150" required id="js-ins-fees"/>
                         <label for="js-mort-fees" >Mortgage Pmt</label>
                         <input type="number" step=0.01 value="150" required id="js-mort-fees"/>
                         <label for="js-add-fees" >Additional Monthly Fees</label>
                         <input type="number" step=0.01 value="0" required id="js-add-fees"/>
-                        <input type="submit" class="btn btn-success" value="Re-Calculate Monthly" />
+                        <input type="submit" class="btn btn-success" value="Update Summary" />
                     </form>
                 </div>
 
-                <div class="summary hidden col-sm-6 boxes">
+                <div class="summary col-sm-6 hidden boxes">
                     <h2>Summary</h2>
+                    <h2>Monthly Summary</h2>
+                    <table>
+                        <tr>
+                            <td class="table-group" colspan=2>Income</td>
+                        </tr>
+                        <tr>
+                            <td>Rent</td>
+                            <td class="js-sumTable-rent">1300</td>
+                        </tr>
+                        <tr>
+                            <td class="table-group" colspan=2>Fixed Costs</td>
+                        </tr>
+                        <tr>
+                            <td>Mortgage</td>
+                            <td class="js-sumTable-mort">500</td>
+                        </tr>
+                        <tr>
+                            <td>Insurance</td>
+                            <td class="js-sumTable-ins">150</td>
+                        </tr>
+                        <tr>
+                            <td>HOA (Maintenance)</td>
+                            <td class="js-sumTable-hoa">0</td>
+                        </tr>
+                        <tr>
+                            <td class="table-group" colspan=2>Variable Costs</td>
+                        </tr>
+                        <tr>
+                            <td>Property Management</td>
+                            <td class="js-sumTable-prop">130</td>
+                        </tr>
+                        <tr>
+                            <td>Leasing</td>
+                            <td class="js-sumTable-lease">65</td>
+                        </tr>
+                        <tr>
+                            <td>Repair reserve</td>
+                            <td class="js-sumTable-repair">65</td>
+                        </tr>
+                        <tr>
+                            <td>Vacancy Reserve</td>
+                            <td class="js-sumTable-vac">65</td>
+                        </tr>
+                        <tr>
+                            <td class="table-group" colspan=2>Cash Flow</td>
+                        </tr>
+                        <tr>
+                            <td>Cash Flow</td>
+                            <td class="js-sumTable-flow">100</td>
+                        </tr>
+                    </table>
                 </div>
 
                 <div class="amortization-table hidden col-sm-6 ">
