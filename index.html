@@ -49,24 +49,24 @@
                 </div>
 
                 <div class="monthly-costs hidden col-sm-6 boxes" >
-                    <form>
+                    <form class="js-monthly-breakdown-form">
                         <legend>Monthly Breakdown</legend>
                         <label for="js-rent-expected">Monthly Rent</label>
                         <input type="number" required value="1300" id="js-rent-expected"/>
                         <label for="js-vac-fees" >Vacancy Reserves (5% rent?)</label>
-                        <input type="number" value="65" required  id="js-vac-fees"/>
+                        <input type="number" step=0.01 value="65" required  id="js-vac-fees"/>
                         <label for="js-hoa-fees" >Maintenance (HOA) fees</label>
-                        <input type="number" value="0" required  id="js-hoa-fees"/>
+                        <input type="number" step=0.01 value="0" required  id="js-hoa-fees"/>
                         <label for="js-prop-fees" >Property Management Fees (7-12% rent?)</label>
-                        <input type="number" value="130" required  id="js-prop-fees"/>
+                        <input type="number" step=0.01 value="130" required  id="js-prop-fees"/>
                         <label for="js-lease-fees" >Leasing Fees (3-6% rent?)</label>
-                        <input type="number" value="65" required  id="js-lease-fees"/>
+                        <input type="number" step=0.01 value="65" required  id="js-lease-fees"/>
                         <label for="js-ins-fees" >Insurance (check your area)</label>
-                        <input type="number" value="150" required id="js-ins-fees"/>
+                        <input type="number" step=0.01 value="150" required id="js-ins-fees"/>
                         <label for="js-mort-fees" >Mortgage Pmt</label>
-                        <input type="number" value="150" required id="js-mort-fees"/>
+                        <input type="number" step=0.01 value="150" required id="js-mort-fees"/>
                         <label for="js-add-fees" >Additional Monthly Fees</label>
-                        <input type="number" value="0" required id="js-add-fees"/>
+                        <input type="number" step=0.01 value="0" required id="js-add-fees"/>
                         <input type="submit" class="btn btn-success" value="Calculate Monthly" />
                     </form>
                 </div>

@@ -1,9 +1,14 @@
+let monthlyCosts = {
+    
+}
 function buildMonthlyCosts(){
 
 }
 
-function MonthlyCostsBase(){
-    
+function buildMonthlyCostsBase(pmt){
+    $(".monthly-costs").removeClass("hidden")
+    $("#js-mort-fees").val(pmt)
+
 }
 
 function buildPaymentRow(pmtObj){
@@ -70,7 +75,9 @@ function updatePmt(monthlypmt){
     $(".my-number").text(`$ ${monthlypmt}`)
 }
 
-function calculateData(){
+//Will have to think about breaking up this function amort table and monthly build should not be here
+//need to create a runner function
+function calculateMortgagePayment(){
     const loan = parseFloat($("#js-house-price").val()) - parseFloat($("#js-down-payment").val())
     const numberOfMonths = parseInt($("#js-amort-years").val())* 12
     const interestRate = parseFloat($("#js-interest").val())/12/100
@@ -79,6 +86,7 @@ function calculateData(){
     const denominator = Math.pow((1+interestRate),numberOfMonths)-1
     const monthlypmt = Math.round(loan * numerator / denominator*100)/100
     updatePmt(monthlypmt)
+    buildMonthlyCostsBase(monthlypmt)
     const loanObj = {
         "P":loan,
         "PMT":monthlypmt,
@@ -87,10 +95,11 @@ function calculateData(){
     }
     buildAmortTable(loanObj)
 }
+
 function watchSubmit(){
     $(".js-mortgage-details").submit(event=>{
         event.preventDefault()
-        calculateData()
+        calculateMortgagePayment()
     })
 }
 
@@ -101,9 +110,16 @@ function watchToggleAmort(){
     })
 }
 
+function watchMonthlyForm(){
+    $(".js-monthly-breakdown-form").submit(event=>{
+        event.preventDefault()
+    })
+}
+
 function readyfx(){
     watchSubmit()
     watchToggleAmort()
+    watchMonthlyForm()
 }
 
 $(readyfx)
