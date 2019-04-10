@@ -14,7 +14,7 @@ function buildOneTimeCosts(){
     //prefill forms
     $("#js-expected-repair").val(expectedRepair)
     $("#js-closing").val(closingCost)
-    console.log(downPayment,expectedRepair,closingCost,cashInvest,cashOnCash)
+    $(".js-one-time-costs").removeClass("hidden")
 }
 
 function updateOneTimeCosts(){
