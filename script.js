@@ -1,12 +1,15 @@
 //monthly inputs:
 let rent, mortgagePmt, tax, insurance, hoa, prop, lease, repair, vac, add, cashflow
 //One time
-let closingCost, downPayment, housePrice,cashInvest,cashOnCash,capRate
+let closingCost =0
+let  downPayment, housePrice,cashInvest,cashOnCash,capRate
 let expectedRepair =3000
 
 function buildOneTimeCosts(){
     housePrice = parseFloat($("#js-house-price").val())
-    closingCost = Math.round(housePrice*0.0225*100)/100
+    if (closingCost <1){
+        closingCost = Math.round(housePrice*0.0225*100)/100
+    }
     downPayment = parseFloat($("#js-down-payment").val())
     cashInvest = downPayment+closingCost+expectedRepair
     cashOnCash = Math.round(cashflow*12/cashInvest*100*1000)/1000
