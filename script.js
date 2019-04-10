@@ -1,23 +1,27 @@
-function buildSummary(mortgage){
+//monthly inputs:
+let rent, mortgagePmt, tax, insurance, hoa, prop, lease, repair, vac, add, cashflow
+//One time
+let closingCost, expectedRepair, downPayment, housePrice
+
+function buildSummary(){
     /** Given the mortgage payment builds the monthly summary table */
     //gather data
-    const rent = parseFloat($("#js-rent-expected").val())
-    const mort = parseFloat(mortgage)
-    const vac = parseFloat($("#js-vac-fees").val())
-    const prop = parseFloat($("#js-prop-fees").val())
-    const lease =parseFloat($("#js-lease-fees").val())
-    const hoa = parseFloat($("#js-hoa-fees").val())
-    const ins = parseFloat($("#js-ins-fees").val())
-    const add = parseFloat($("#js-add-fees").val())
-    const repair = parseFloat($("#js-repair-fees").val())
-    const taxes = Math.round(parseFloat($("#js-taxes-fees").val())*100)/100
+    rent = parseFloat($("#js-rent-expected").val())
+    vac = parseFloat($("#js-vac-fees").val())
+    prop = parseFloat($("#js-prop-fees").val())
+    lease =parseFloat($("#js-lease-fees").val())
+    hoa = parseFloat($("#js-hoa-fees").val())
+    insurance = parseFloat($("#js-ins-fees").val())
+    add = parseFloat($("#js-add-fees").val())
+    repair = parseFloat($("#js-repair-fees").val())
+    tax = Math.round(parseFloat($("#js-taxes-fees").val())*100)/100
     //calculate
-    const cashflow = Math.round((rent- mort-vac-prop-lease-hoa-ins-add-taxes)*100)/100
+    cashflow = Math.round((rent- mortgagePmt-vac-prop-lease-hoa-insurance-add-tax)*100)/100
     //input data
     $(".js-sumTable-rent").html(rent)
-    $(".js-sumTable-mort").html(mort)
-    $(".js-sumTable-taxes").html(taxes)
-    $(".js-sumTable-ins").html(ins)
+    $(".js-sumTable-mort").html(mortgagePmt)
+    $(".js-sumTable-taxes").html(tax)
+    $(".js-sumTable-ins").html(insurance)
     $(".js-sumTable-hoa").html(hoa)
     $(".js-sumTable-prop").html(prop)
     $(".js-sumTable-lease").html(lease)
@@ -27,38 +31,34 @@ function buildSummary(mortgage){
     $(".js-sumTable-flow").html(cashflow)
 
     //reveal
-    console.log(rent,mort,cashflow)
     $(".summary").removeClass("hidden")
 }
 
-function buildMonthlyCostsBase(pmt){
+function buildMonthlyCostsBase(){
     const housePrice = $("#js-house-price").val()
     const monthlyTaxes = Math.round(housePrice*0.025/12*100)/100
     console.log("here",housePrice,monthlyTaxes)
     $(".monthly-costs").removeClass("hidden")
-    $("#js-mort-fees").val(pmt)
+    $("#js-mort-fees").val(mortgagePmt)
     $("#js-taxes-fees").val(monthlyTaxes)
-
 }
-function updateMonthlyCosts(rent){
+function updateMonthlyCosts(){
     /* Updates Monthly breakdown form based on the expected rent. 
     Calculates: 
         1.Property management
         2.Vacancry reserve
         3.Repair and maintenance reserve
      */
-    console.log(rent)
-    const vac = Math.round(rent*0.05*100)/100
-    const prop = Math.round(rent*0.10*100)/100
-    const lease = Math.round(rent*0.05*100)/100
-    const repair = Math.round(rent*0.08*100)/100
-    const mortgage = parseFloat($("#js-mort-fees").val())
-    console.log(vac,prop,lease,repair,mortgage)
+    vac = Math.round(rent*0.05*100)/100
+    prop = Math.round(rent*0.10*100)/100
+    lease = Math.round(rent*0.05*100)/100
+    repair = Math.round(rent*0.08*100)/100
+    mortgage = parseFloat($("#js-mort-fees").val())
     $("#js-vac-fees").val(vac)
     $("#js-prop-fees").val(prop)
     $("#js-lease-fees").val(lease)
     $("#js-repair-fees").val(repair)
-    buildSummary(mortgage)
+    buildSummary()
 }
 function buildPaymentRow(pmtObj){
     //create a row
@@ -118,10 +118,10 @@ function buildAmortTable(loanObj){
     }
 }
 
-function updatePmt(monthlypmt){
+function updatePmt(){
     $(".js-monthly-pmt").removeClass("hidden")
     $(".my-number").empty()
-    $(".my-number").text(`$ ${monthlypmt}`)
+    $(".my-number").text(`$ ${mortgagePmt}`)
 }
 
 //Will have to think about breaking up this function amort table and monthly build should not be here
@@ -133,17 +133,16 @@ function calculateMortgagePayment(){
     //console.log(loan,numberOfMonths,interestRate)
     const numerator = interestRate * Math.pow((1+interestRate),numberOfMonths) 
     const denominator = Math.pow((1+interestRate),numberOfMonths)-1
-    const monthlypmt = Math.round(loan * numerator / denominator*100)/100
-    updatePmt(monthlypmt)
-    buildMonthlyCostsBase(monthlypmt)
+    mortgagePmt = Math.round(loan * numerator / denominator*100)/100
+    updatePmt()
+    buildMonthlyCostsBase()
     const loanObj = {
         "P":loan,
-        "PMT":monthlypmt,
+        "PMT":mortgagePmt,
         "I":interestRate,
-        "N":monthlypmt,
     }
     buildAmortTable(loanObj)
-    buildSummary(monthlypmt)
+    buildSummary()
     
 }
 
@@ -164,15 +163,12 @@ function watchToggleAmort(){
 function watchMonthlyForm(){
     $(".js-monthly-breakdown-form").submit(event=>{
         event.preventDefault()
-        const mort= $("#js-mort-fees").val()
-        buildSummary(mort)
-
+        buildSummary()
     })
     $(".js-rent-push").click(event=>{
         event.preventDefault()
-        const rent = $("#js-rent-expected").val()
-        console.log(`button clicked ${rent}`)
-        updateMonthlyCosts(rent)
+        rent = $("#js-rent-expected").val()
+        updateMonthlyCosts()
 
     })
 }
