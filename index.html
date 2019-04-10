@@ -47,16 +47,6 @@
 
                 <div class="amortization-graphs hidden col-sm-6 boxes">
                 </div>
-                <div class="one-time-costs hidden col-sm-6 boxes" >
-                    <form class="js-one-time-costs-form" >
-                        <legend>One Time Costs</legend>
-                        <label for="js-expected-repair">Expected Repairs</label>
-                        <input id="js-expected-repair" val="3000" type="number" step="0.01" />
-                        <label for="js-closing">Closing Costs (1.5-3% purchase price?)</label>
-                        <input id="js-closing" val="4500" type="number" step="0.01" />
-                        <input class="btn btn-success" type="submit"/>
-                    </form>
-                </div>
                 <div class="monthly-costs hidden col-sm-6 boxes" >
                     <form class="js-monthly-breakdown-form">
                         <legend>Monthly Breakdown</legend>
@@ -84,9 +74,35 @@
                         <input type="submit" class="btn btn-success" value="Update Summary" />
                     </form>
                 </div>
+                <div class="one-time-costs col-sm-6 boxes" >
+                    <form class="js-one-time-costs-form" >
+                        <legend>One Time Costs</legend>
+                        <label for="js-expected-repair">Expected Repairs</label>
+                        <input id="js-expected-repair" val="0" type="number" step="0.01" />
+                        <label for="js-closing">Closing Costs (1.5-3% purchase price?)</label>
+                        <input id="js-closing" val="4500" type="number" step="0.01" />
+                        <input type="submit" class="btn btn-success" value="Update Summary" />
+                    </form>
+                </div>
 
                 <div class="summary col-sm-6 hidden boxes">
                     <h2>Return Summary</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Total Investment</th>
+                                <th>Cash/Cash Return</th>
+                                <th>Cap Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="js-summary-totalInvestment"></td>
+                                <td class="js-summary-cash" ></td>
+                                <td class="js-summary-cap" ></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <h2>Monthly Summary</h2>
                     <table>
                         <tr>

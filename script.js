@@ -1,8 +1,32 @@
 //monthly inputs:
 let rent, mortgagePmt, tax, insurance, hoa, prop, lease, repair, vac, add, cashflow
 //One time
-let closingCost, expectedRepair, downPayment, housePrice
+let closingCost, downPayment, housePrice,cashInvest,cashOnCash,capRate
+let expectedRepair =3000
 
+function buildOneTimeCosts(){
+    housePrice = parseFloat($("#js-house-price").val())
+    closingCost = Math.round(housePrice*0.0225*100)/100
+    downPayment = parseFloat($("#js-down-payment").val())
+    cashInvest = downPayment+closingCost+expectedRepair
+    cashOnCash = Math.round(cashflow*12/cashInvest*100*1000)/1000
+    capRate = Math.round((cashflow+mortgagePmt)*12/housePrice*100*1000)/1000
+    //prefill forms
+    $("#js-expected-repair").val(expectedRepair)
+    $("#js-closing").val(closingCost)
+    console.log(downPayment,expectedRepair,closingCost,cashInvest,cashOnCash)
+}
+
+function updateOneTimeCosts(){
+    closingCost = parseFloat($("#js-closing").val())
+    expectedRepair = parseFloat($("#js-expected-repair").val())
+}
+
+function buildInvestmentSummary(){
+    $(".js-summary-totalInvestment").html(cashInvest)
+    $(".js-summary-cash").html(`${cashOnCash} %`)
+    $(".js-summary-cap").html(`${capRate} %`)
+}
 function buildSummary(){
     /** Given the mortgage payment builds the monthly summary table */
     //gather data
@@ -146,10 +170,21 @@ function calculateMortgagePayment(){
     
 }
 
+function watchOneTimeForm(){
+    $(".js-one-time-costs-form").submit(event=>{
+        event.preventDefault()
+        updateOneTimeCosts()
+        buildOneTimeCosts()
+        buildInvestmentSummary()
+    })
+}
+
 function watchSubmit(){
     $(".js-mortgage-details").submit(event=>{
         event.preventDefault()
         calculateMortgagePayment()
+        buildOneTimeCosts()
+        buildInvestmentSummary()
     })
 }
 
@@ -164,12 +199,15 @@ function watchMonthlyForm(){
     $(".js-monthly-breakdown-form").submit(event=>{
         event.preventDefault()
         buildSummary()
+        buildOneTimeCosts()
+        buildInvestmentSummary()
     })
     $(".js-rent-push").click(event=>{
         event.preventDefault()
         rent = $("#js-rent-expected").val()
         updateMonthlyCosts()
-
+        buildOneTimeCosts()
+        buildInvestmentSummary()
     })
 }
 
@@ -177,6 +215,7 @@ function readyfx(){
     watchSubmit()
     watchToggleAmort()
     watchMonthlyForm()
+    watchOneTimeForm()
 }
 
 $(readyfx)
