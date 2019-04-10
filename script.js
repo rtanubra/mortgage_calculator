@@ -185,6 +185,10 @@ function watchSubmit(){
         calculateMortgagePayment()
         buildOneTimeCosts()
         buildInvestmentSummary()
+
+        //reveal sections
+        $(".section-input-costs").removeClass("hidden")
+        $(".section-summary").removeClass("hidden")
     })
 }
 
