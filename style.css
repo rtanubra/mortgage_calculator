@@ -2,7 +2,12 @@ h1{
     font-size:30px;
 }
 h2{
-    font-size:16px;
+    font-size:25px;
+    text-align: center;
+
+}
+h3{
+    font-size:20px;
 
 }
 .main-section{

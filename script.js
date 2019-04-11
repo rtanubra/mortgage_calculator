@@ -57,6 +57,11 @@ function buildSummary(){
     $(".js-sumTable-add").html(add)
     $(".js-sumTable-flow").html(cashflow)
 
+    //one time costs
+    $(".js-down-payment-summary").html(downPayment)
+    $(".js-closing-summary").html(closingCost)
+    $(".js-repair-summary").html(expectedRepair)
+
     //reveal
     $(".summary").removeClass("hidden")
 }

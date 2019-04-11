@@ -20,7 +20,7 @@
                 <div class="row">   
                     <form class="js-mortgage-details item col-sm-6">
                         <fieldset>
-                            <h2>Mortgage Details</h2>
+                            <h3>Mortgage Details</h3>
                             <label for ="js-house-price" >House Price</label>
                             <input placeholder="180000" required type=number id="js-house-price"/>
                             <label for="js-down-payment" >Down Payment</label>
@@ -34,7 +34,7 @@
                     </form>
     
                     <div class="js-monthly-pmt hidden item col-sm-6">
-                        <h2>Monthly Pmt</h2>
+                        <h3>Monthly Pmt</h3>
                         <p>Your Monthly Payment is: <strong><span class="my-number"></span></strong></p>
                         <button class="js-tgl-table btn btn-info">Toggle Amortization Table</button>
                         <button class="hidden js-tgl-graphs btn btn-info">Toggle Amortization Graphs</button>
@@ -43,28 +43,9 @@
                 </div>
             </div>
             <div class="container-fluid">
-            <section class="row">
-                <div class="amortization-graphs hidden col-sm-6 boxes">
-                </div>
-                <div class="amortization-table hidden col-sm-6 ">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>PMT</th>
-                                <th>Principal Paid</th>
-                                <th>Interest Paid</th>
-                                <th>Balance</th>
-                            </tr>
-                        </thead>
-                        <tbody class="js-amort-table">
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            
             
             <section class="section-input-costs hidden" >
+                <h2>Costs</h2>
                 <div class="js-one-time-costs hidden" >
                     <form class="js-one-time-costs-form" >
                         <legend>One Time Costs</legend>
@@ -106,8 +87,9 @@
             </section>
 
             <section class="section-summary hidden" >
+                <h2>Summary</h2>
                 <div class="summary col-sm-6 hidden boxes">
-                    <h2>Return Summary</h2>
+                    <h3>Overall Return</h3>
                     <table>
                         <thead>
                             <tr>
@@ -124,7 +106,24 @@
                             </tr>
                         </tbody>
                     </table>
-                    <h2>Monthly Summary</h2>
+                    <h3>Cash Investment</h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Down Payment</td>
+                                <td class="js-down-payment-summary"></td>
+                            </tr>
+                            <tr>
+                                <td>Closing Costs</td>
+                                <td class="js-closing-summary"></td>
+                            </tr>
+                            <tr>
+                                <td>Expected Immediate Repair</td>
+                                <td class="js-closing-summary"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>Monthly Return</h3>
                     <table>
                         <tr>
                             <td class="table-group" colspan=2>Income</td>
@@ -185,6 +184,27 @@
                     </table>
                 </div>
             </section>
+
+            <section class="section-amortization row">
+                <div class="amortization-graphs hidden col-sm-6 boxes">
+                </div>
+                <div class="amortization-table hidden col-sm-6 ">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>PMT</th>
+                                <th>Principal Paid</th>
+                                <th>Interest Paid</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="js-amort-table">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
             </div>
 
         </main>
